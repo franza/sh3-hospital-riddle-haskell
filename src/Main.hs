@@ -22,7 +22,7 @@ clauses = [firstIsLargerThanSecond, secondIsTwiceTheThird, thirdIsSmallerThanFir
         let filterLength n = filter ((== n) . length)
             subs = filterLength 3 $ subsequences digits
             inTopRow = (flip elem) topRow
-        in all (\xs -> not $ all inTopRow xs) subs
+        in any (\xs -> all (not . inTopRow) xs) subs
 
 main = 
     let hasZeros = elem 0
