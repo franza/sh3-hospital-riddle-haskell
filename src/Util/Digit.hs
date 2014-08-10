@@ -2,8 +2,8 @@ module Util.Digit where
 
 import Data.Char (digitToInt)
 
-toDigits :: Integer -> [Int]
-toDigits = map digitToInt . show
+toDigits :: Integer -> [Integer]
+toDigits = map (toInteger . digitToInt) . show
 
-fromDigits :: [Int] -> Int
+fromDigits :: [Integer] -> Int
 fromDigits = read . foldr ((++) . show) ""
