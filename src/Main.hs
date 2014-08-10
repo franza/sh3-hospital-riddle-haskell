@@ -1,15 +1,11 @@
 module Main where
 
 import Data.List (sort, nub, subsequences)
-import Data.Char (digitToInt)
+import Util.Digit
 
 type Clause = [Int] -> Bool
 
 topRow = [1, 2, 3]
-
-rightRow = [3, 6, 9]
-
-
 
 clauses :: [Clause]
 clauses = [firstIsLargerThanSecond, secondIsTwiceTheThird, thirdIsSmallerThanFirst, 
@@ -27,12 +23,6 @@ clauses = [firstIsLargerThanSecond, secondIsTwiceTheThird, thirdIsSmallerThanFir
 
 reject :: (a -> Bool) -> [a] -> [a]
 reject f = filter (not . f)
-
-toDigits :: Integer -> [Int]
-toDigits = map digitToInt . show
-
-fromDigits :: [Int] -> Int
-fromDigits = read . foldr ((++) . show) ""
 
 main = 
   let sequence = reject (elem 0) $ map toDigits [1111..9999]
