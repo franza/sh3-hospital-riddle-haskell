@@ -29,5 +29,5 @@ main =
         sequence = filter (not . hasZeros) $ map toDigits [1111..9999]
         allClausesApplied = map (\x -> and $ map ($ x) clauses) sequence
         filtered = filter snd $ zip sequence allClausesApplied
-        res = map fromDigits $ map fst filtered
+        res = map (fromDigits . fst) filtered
     in print res
