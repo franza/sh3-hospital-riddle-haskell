@@ -3,7 +3,7 @@ module Main where
 import Data.List (sort, nub, subsequences)
 import Util.Digit
 
-type Clause = [Integer] -> Bool
+type Clause = Digits -> Bool
 
 topRow = [1, 2, 3]
 
