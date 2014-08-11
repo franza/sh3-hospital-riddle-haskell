@@ -26,8 +26,8 @@ clauses = [firstIsLargerThanSecond, secondIsTwiceTheThird, thirdIsSmallerThanFir
 
 main = 
     let hasZeros = elem 0
-        sequence = filter (not . hasZeros) $ map toDigits [1111..9999]
-        allClausesApplied = map (\x -> and $ map ($ x) clauses) sequence
-        filtered = filter snd $ zip sequence allClausesApplied
+        seq = filter (not . hasZeros) $ map toDigits [1111..9999]
+        applyClauses x = and $ map ($ x) clauses
+        filtered = filter snd $ zip seq $ map applyClauses seq
         res = map (fromDigits . fst) filtered
     in print res
